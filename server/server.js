@@ -4,6 +4,7 @@ const io = require('socket.io')(http, {
     cors: { origin: "*" }
 });
 
+// get random uuid
 users = {}
 
 io.on('connection', socket => {
@@ -11,9 +12,8 @@ io.on('connection', socket => {
         if (Name !== '' && Name !== undefined && Name !== null) {
             io.emit('connected', Name)
             users[socket.id] = Name
-            // array of users value
-            let online = Object.values(users)
-            io.emit('online', online)
+
+            io.emit('online', users)
         }
     })
     socket.on('message', message => {
@@ -23,8 +23,7 @@ io.on('connection', socket => {
         io.emit('disconnected', users[socket.id])
         delete users[socket.id]
         // array of users value
-        let online = Object.values(users)
-        io.emit('online', online)
+        io.emit('online', users)
     })
     // socket.on('test', test => { console.log(`${test} test`) })
 

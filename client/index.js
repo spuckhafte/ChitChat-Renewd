@@ -1,4 +1,4 @@
-const socket = io('ws://localhost:3000')
+const socket = io.connect('http://localhost:3000')
 
 
 socket.on('message', msg => {
@@ -65,21 +65,35 @@ socket.on('disconnected', user => {
 })
 
 
+// get any color from colors object accept secondary
+function getRandomColor() {
+    const keys = Object.keys(colors)
+    // color should not be secondary
+    while (true) {
+        const random = keys[Math.floor(Math.random() * keys.length)]
+        if (random !== 'secondary' && random !== 'light' && random !== 'dark') {
+            return colors[random]
+        }
+    }
+}
+
 
 socket.on('online', users => {
+    // users = "id and name object"
     let online_area = document.getElementById('user-content')
-    socket.emit('test', users.length)
-    if (users.length > 0) {
+    let userids = Object.keys(users)
+    if (userids.length > 0) {
         online_area.innerHTML = ''
-        users.forEach(user => {
+
+        userids.forEach(userid => {
             let user_el = document.createElement('li')
-            user_el.innerText = user
+
+            userid == socket.id ? user_el.innerText = `${users[userid]} (you)` : user_el.innerText = users[userid]
+            user_el.style.color = getRandomColor()
             user_el.style.fontSize = '2.4vh'
             user_el.style.fontWeight = 'bold'
             user_el.style.wordBreak = 'break-all'
-            user_el.style.color = colors['success']
             user_el.style.backgroundColor = 'transparent'
-
             online_area.appendChild(user_el)
         })
     }
