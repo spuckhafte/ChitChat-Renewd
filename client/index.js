@@ -20,7 +20,14 @@ socket.on('message', msg => {
     let message_area = document.getElementById('receive-message-area')
 
     message_area.appendChild(msgParent)
+    document.getElementById('receive-message-area').scrollTop = document.getElementById('receive-message-area').scrollHeight
     style(socket.id, msg[1], msg_el, msgParent, name)
+    document.querySelector('textarea').value = ''
+    document.querySelector('textarea').style.color = 'white'
+    document.querySelector('textarea').disabled = false
+    document.querySelector('textarea').focus()
+    document.querySelector('textarea').style.cursor = 'text'
+    document.getElementById('send-btn').style.backgroundColor = 'gray'
 })
 
 
@@ -77,7 +84,6 @@ function getRandomColor() {
     }
 }
 
-
 socket.on('online', users => {
     // users = "id and name object"
     let online_area = document.getElementById('user-content')
@@ -100,12 +106,19 @@ socket.on('online', users => {
 })
 
 function sendMessage() {
-    let msg = document.querySelector('textarea').value
-    document.querySelector('textarea').value = ''
-    socket.emit('message', msg)
+    if (document.getElementById('send-btn').style.backgroundColor !== 'gray') {
+        let msg = document.querySelector('textarea').value
+        if (msg.length > 0) {
+            document.querySelector('textarea').style.color = colors['secondary']
+            document.querySelector('textarea').style.cursor = 'wait'
+            document.querySelector('textarea').disabled = true
+            document.getElementById('send-btn').style.backgroundColor = 'gray'
+            socket.emit('message', msg)
+        }
+    }
 }
 
-function style(socketId, userId, element, elementParent, elementName, username) {
+function style(socketId, userId, element, elementParent, elementName) {
     if (socketId == userId) {
         elementParent.style.position = 'relative'
         elementParent.style.left = '100%'
@@ -146,8 +159,8 @@ window.onload = () => {
 // function that takes username from prompt
 function login() {
     while (true) {
-        username = prompt('Enter your username (only alphabet, max 10 characters):')
-        if (username !== null && username !== undefined && /^[a-zA-Z()]+$/.test(username) && username.length <= 10) {
+        username = prompt('Enter your username (only alphabet, max 15 characters):')
+        if (username !== null && username !== undefined && /^[a-zA-Z]+$/.test(username) && username.length <= 15) {
             return username
         } else {
             continue
@@ -175,7 +188,7 @@ document.getElementById('msg-input').onkeydown = () => {
     let special1 = [106, 107, 109, 110, 111, 186, 187, 188, 189, 190, 191, 192, 219, 220, 221, 222]
     let inp = String.fromCodePoint(event.keyCode);
 
-    if (document.getElementById('msg-input').value.length == 0 && (/[a-zA-Z0-9-_ ]/.test(inp) || special1.includes(event.keyCode))) {
+    if (document.getElementById('msg-input').value.length == 0 && (/[a-zA-Z0-9-_]/.test(inp) || special1.includes(event.keyCode))) {
         let button = document.getElementById('send-btn')
         // change background color to green
         button.style.backgroundColor = colors['success']
