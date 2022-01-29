@@ -4,7 +4,6 @@ const io = require('socket.io')(http, {
     cors: { origin: "*" }
 });
 
-// get random uuid
 users = {}
 
 io.on('connection', socket => {
