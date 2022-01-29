@@ -7,5 +7,5 @@ Simple chat application with Socket.io
 <kbd>1. cd server</kbd>
 <kbd>2. npm install</kbd>
 <kbd>3. node server</kbd>
-4. Start live server for `index.html` (in folder client)
+  <kbd>4. Start live server for index.html (in folder client)</kbd>
 </kbd>
