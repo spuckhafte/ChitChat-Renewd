@@ -1,0 +1,102 @@
+.root {
+    /* bootstrap colors */
+    --success: #5cb85c;
+    --info: #5bc0de;
+    --warning: #f0ad4e;
+    --danger: #d9534f;
+    --primary: #337ab7;
+}
+
+/* style to make the element on bottom right side of the screen */
+body {
+    background-color: #121212;
+    color: white;
+    /* times new roman font */
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+.self {
+    position: relative;
+    background-color: var(--primary);
+    bottom: 0;
+    right: 0;
+}
+
+/* style to make the element on bottom left side of the screen */
+.other {
+    position: relative;
+    background-color: var(--warning);
+    bottom: 0;
+    left: 0;    
+}
+
+#msg-input {
+    height: 75px;
+    font-size: large;
+    box-shadow: none;
+    background-color: #4e4e4e54;
+    color: white;
+    resize: none;
+}
+#msg-input::-webkit-scrollbar {
+    display: none
+}
+
+#send-msg-area {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 8px
+}
+
+#send-btn {
+    box-shadow: none;
+    height: 60px
+}
+
+#receive-message-area {
+    padding: 8px;
+    border: 4px solid #f0ad4e;;
+    border-left: none;
+    height: 75vh;
+    width: 116.6vh;
+    overflow-y: auto;
+    /* disable x overflow */
+    overflow-x:hidden;
+}
+
+#joined {
+    padding: 2%;
+    border: 4px solid #d9534f;;
+    border-right:none;
+    height: 75vh;
+    width: 50vh;
+    /* display: grid; */
+    /* place-items: center; */
+    overflow-y: scroll;
+}
+
+#static-id {
+    font-size: medium;
+    font-weight: bold;
+    color: #f0ad4e;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #5cb85c;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #5bc0de;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #366370;
+  }
