@@ -1,6 +1,6 @@
 # [ChitChat-Renewd](https://shit-chat.netlify.app)
 
-Simple chat application with Socket.io
+Simple chat application with Socket.io and [JDb](https://github.com/spuckhafte/Jdb-v2)
 
 ## Update
 I rebuilt it using **[JDb](https://github.com/spuckhafte/Jdb-v2)**<br>
