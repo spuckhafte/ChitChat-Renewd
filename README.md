@@ -2,10 +2,12 @@
 
 Simple chat application with Socket.io
 
-## How to run
-<kbd>
-<kbd>1. cd server</kbd><br>
-<kbd>2. npm install</kbd><br>
-<kbd>3. node server</kbd><br>
-  <kbd>4. Start live server for index.html (dir: client)</kbd>
-</kbd>
+## Update
+I rebuilt it using **[JDb](https://github.com/spuckhafte/Jdb-v2)**<br>
+So basically the messages gets stored in JSON files.<br>
+Whenever you reload it should load previously stored messages and should store your account.<br>
+
+## Problem
+I hosted it on **heroku** and all the files get **reset** whenever the server sleeps (due to 30 minutes of inactivity)
+
+*bruh*
