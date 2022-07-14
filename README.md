@@ -1,4 +1,4 @@
-# [ChitChat-Renewd](https://shit-chat.netlify.app)
+# [ChitChat-Renewd](https://shity-chat.netlify.app)
 
 Simple chat application with Socket.io and [JDb](https://github.com/spuckhafte/Jdb-v2)
 
