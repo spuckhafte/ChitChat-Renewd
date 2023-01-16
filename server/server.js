@@ -1,6 +1,8 @@
 const http = require('http').createServer();
 const jdb = require('json-db-jdb');
-const config = require('./config');
+require('dotenv').config();
+
+const config = process.env.shitchatconfig;
 
 const io = require('socket.io')(http, {
     cors: { origin: "*" }
