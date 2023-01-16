@@ -1,5 +1,5 @@
 const http = require('http').createServer();
-const jdb = require('json-db-jdb');
+const jdb = require('json-db-jdb/fastr/jdb.js');
 require('dotenv').config();
 
 const config = process.env.shitchatconfig;
