@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "json-db-jdb": "^3.0.0",
-    "socket.io": "^4.4.1"
+    "socket.io": "^4.4.1",
+    "dotenv": "^16.0.3"
   }
 }
